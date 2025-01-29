@@ -20,15 +20,19 @@ export class TaskListComponent implements OnInit {
   }
 
   getTasks(): void {
-    this.apiService.getTasks().subscribe(
-      (data) => {
+    this.apiService.getTasks().subscribe({
+      next: (data) => {
         this.tasks = data;
         this.isLoading = false;
       },
-      (error) => {
-        console.error('Error fetching tasks:', error);
+      error: (error) => {
+        console.error('Error fetching tasks: ', error);
         this.isLoading = false;
+      },
+      complete: () => {
+        console.log('Tasks fetch completed.');
       }
-    );
+    });
+
   }
 }
