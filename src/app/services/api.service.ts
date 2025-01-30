@@ -30,4 +30,7 @@ export class ApiService {
     createTask(task: Omit<Task, 'id'>): Observable<Task> {
         return this.http.post<Task>(`${this.apiUrl}/api/tasks`, task);
     }
+
+    // Method to delete a specific task
+    // deleteTask()
 }
