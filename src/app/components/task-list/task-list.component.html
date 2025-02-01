@@ -17,6 +17,9 @@
           <span class="badge" [ngClass]="{'bg-success': task.isCompleted, 'bg-danger': !task.isCompleted}">
             {{ task.isCompleted ? 'Completed' : 'Not Completed' }}
           </span>
+          <button class="btn btn-danger btn-sm position-absolute bottom-0 end-0" (click)="deleteTask(task.id)">
+            Delete
+          </button>
         </div>
       </div>
     </div>

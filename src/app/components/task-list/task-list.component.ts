@@ -50,6 +50,19 @@ export class TaskListComponent implements OnInit {
         console.log('Tasks fetch completed.');
       }
     });
+  }
 
+  deleteTask(id: number) {
+    if (confirm('Are you sure you want to delete this task?: ')) {
+      this.apiService.deleteTask(id).subscribe({
+        next: () => {
+          console.log(`Task with ID ${id} deleted successfully.`);
+          this.refreshTasks();
+        },
+        error: (error) => {
+          console.error('Error deleting task: ', error);
+        }
+      })
+    }
   }
 }
