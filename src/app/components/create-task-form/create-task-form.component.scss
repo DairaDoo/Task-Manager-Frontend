@@ -1,0 +1,81 @@
+/* Updated Pastel Color Palette */
+.text-pastel-primary { color: #5271FF; } /* Deep pastel blue */
+.text-muted { color: #4E4E4E; } /* Improved readability */
+.bg-pastel-light { background-color: #F8F9FA; } /* Soft neutral background */
+.bg-pastel-green { background-color: #4CAF50 !important; } /* Stronger pastel green */
+.bg-pastel-red { background-color: #FF6B6B !important; } /* Bolder pastel red */
+.alert-pastel-warning { background-color: #FFC75F; color: #4A4A4A; border-left: 5px solid #FF9A3C; }
+
+/* Button Improvements */
+.btn-pastel-blue { 
+  background-color: #5271FF; 
+  color: white; 
+  border: none; 
+  transition: background-color 0.3s ease; 
+}
+.btn-pastel-blue:hover { 
+  background-color: #4158D0; 
+  color: white; 
+}
+.btn-pastel-green { 
+  background-color: #4CAF50; 
+  color: white; 
+  border: none; 
+  transition: background-color 0.3s ease; 
+}
+.btn-pastel-green:hover { 
+  background-color: #45A049; 
+  color: white; 
+}
+
+/* Status Badge */
+.status-badge {
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 6px 12px;
+}
+
+/* Smooth Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.scale-hover:hover {
+  transform: scale(1.07);
+  transition: transform 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal Body */
+.modal-body {
+  background-color: #F8F9FA; /* Soft background for the form */
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+/* Form Fields Styling */
+.form-floating {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  border-radius: 10px; /* Rounded edges for a softer look */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+
+/* Floating Label Styling */
+.form-floating > label {
+  font-weight: 600;
+  color: #5271FF; /* Pastel blue label color */
+}
+
+/* Error Message Styling */
+.text-danger {
+  font-size: 0.85rem;
+  color: #FF6B6B; /* Red color for error messages */
+}

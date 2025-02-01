@@ -1,13 +1,13 @@
 <!-- Button to open the modal -->
-<button type="button" class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#taskModal">
-  New Task
+<button type="button" class="btn btn-pastel-blue rounded-pill px-4 shadow-sm scale-hover" data-bs-toggle="modal" data-bs-target="#taskModal">
+  <i class="bi bi-plus-circle-fill"></i> New Task
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content border-0 shadow-lg">
-      <div class="modal-header bg-primary text-white">
+    <div class="modal-content border-q shadow-lg rounded-lg">
+      <div class="modal-header bg-pastel-light text-pastel-primary rounded-top">
         <h5 class="modal-title" id="taskModalLabel">Create New Task</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -15,21 +15,21 @@
         <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
           <!-- Title field -->
           <div class="form-floating mb-3">
-            <input type="text" id="title" class="form-control" formControlName="title" placeholder="Task title" required />
+            <input type="text" id="title" class="form-control form-control-lg shadow-sm" formControlName="title" placeholder="Task title" required />
             <label for="title">Task Title</label>
-          </div>
-          <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="text-danger small">
-            The title is required.
+            <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="text-danger small">
+              The title is required.
+            </div>
           </div>
 
           <!-- Description field -->
           <div class="form-floating mb-3">
-            <textarea id="description" class="form-control" formControlName="description" placeholder="Task description" style="height: 100px"></textarea>
+            <textarea id="description" class="form-control form-control-lg shadow-sm" formControlName="description" placeholder="Task description" style="height: 120px;"></textarea>
             <label for="description">Description (optional)</label>
           </div>
 
           <!-- Completion toggle -->
-          <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center justify-content-between mb-3">
             <label class="form-label fw-bold">Status:</label>
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" formControlName="isCompleted" id="isCompleted">
@@ -38,8 +38,8 @@
           </div>
 
           <div class="modal-footer border-0">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-success" [disabled]="taskForm.invalid" data-bs-dismiss="modal">
+            <button type="button" class="btn btn-outline-secondary scale-hover" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-pastel-green rounded-pill shadow-sm" [disabled]="taskForm.invalid" data-bs-dismiss="modal">
               <i class="bi bi-check-circle-fill"></i> Create Task
             </button>
           </div>

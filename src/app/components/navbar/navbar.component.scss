@@ -1,0 +1,20 @@
+/* navbar.component.scss */
+
+/* Color de fondo del navbar (puedes personalizarlo) */
+.bg-pastel-blue {
+background-color: #3674B5; /* Un azul pastel atractivo */
+}
+
+/* Estilos para el texto del navbar */
+.navbar-brand {
+font-size: 3rem;  /* Texto grande */
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil para hacerlo más elegante */
+color: #3674B5; /* Color pastel del texto */
+}
+
+/* Hacer el navbar un poco más alto y con un borde sutil */
+.navbar {
+padding: 15px 0; /* Espaciado superior e inferior */
+border-bottom: 1px solid #ddd; /* Borde sutil */
+}
