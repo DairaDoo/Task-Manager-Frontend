@@ -27,11 +27,29 @@ export class CreateTaskFormComponent {
 
   onSubmit(): void {
     if (this.taskForm.valid) {
-      this.apiService.createTask(this.taskForm.value).subscribe({
+
+
+      const payload = {
+        title: this.taskForm.value.title.trim(), // asegurar que no hay espacios
+        description: this.taskForm.value.description?.trim() || '', // evitar nulos
+        isCompleted: this.taskForm.value.isCompleted ?? false
+      };
+
+      console.log('Payload enviado: ', payload);
+
+
+
+      this.apiService.createTask(payload).subscribe({
         next: (createTask) => {
           console.log('Task created: ', createTask);
           this.taskCreated.emit();
           this.taskForm.reset({isCompleted: false});
+
+          // resetear form a su estado original.
+          this.taskForm.reset();
+          this.taskForm.markAsPristine();
+          this.taskForm.markAsUntouched();
+          this.taskForm.updateValueAndValidity();
         },
         error: (error) => {
           console.error('Error creating task: ', error);

@@ -27,7 +27,7 @@ export class ApiService {
     }
 
     // Method to create a new task
-    createTask(task: Omit<Task, 'id'>): Observable<Task> {
+    createTask(task: Omit<Task, 'id' | 'createdAt'>): Observable<Task> {
         return this.http.post<Task>(`${this.apiUrl}/api/tasks`, task);
     }
 

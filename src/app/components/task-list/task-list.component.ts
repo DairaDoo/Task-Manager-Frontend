@@ -25,7 +25,7 @@ export class TaskListComponent implements OnInit {
 
     this.apiService.getTasks().subscribe({
       next: (data) => {
-        this.tasks = data;
+        this.tasks = [...data];
         this.isLoading = false;
       },
       error: (error) => {
@@ -41,13 +41,16 @@ export class TaskListComponent implements OnInit {
       next: (data) => {
         this.tasks = data;
         this.isLoading = false;
+        console.log(this.tasks)
       },
       error: (error) => {
         console.error('Error fetching tasks: ', error);
         this.isLoading = false;
+        console.log(this.tasks)
       },
       complete: () => {
         console.log('Tasks fetch completed.');
+        console.log(this.tasks)
       }
     });
   }

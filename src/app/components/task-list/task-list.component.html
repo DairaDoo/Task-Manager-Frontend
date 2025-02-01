@@ -8,7 +8,7 @@
     No tasks available.
   </div>
   
-  <div *ngIf="!isLoading && tasks.length > 0" class="row">
+  <div *ngIf="!isLoading && tasks.length > 0" class="row mt-2">
     <div *ngFor="let task of tasks" class="col-md-4 mb-4">
       <div class="card">
         <div class="card-body">
@@ -25,5 +25,5 @@
     </div>
   </div>
 
-  <app-create-task-form (taskCreated)="refreshTasks()"/>
+  <app-create-task-form (taskCreated)="refreshTasks()"></app-create-task-form>
   
