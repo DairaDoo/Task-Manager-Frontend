@@ -1,29 +1,44 @@
-<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
+<!-- Loader -->
+<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center vh-100">
+  <div class="spinner-border text-primary opacity-75" role="status">
+    <span class="visually-hidden">Loading...</span>
   </div>
-  
-  <div *ngIf="!isLoading && tasks.length === 0" class="alert alert-info" role="alert">
-    No tasks available.
-  </div>
-  
-  <div *ngIf="!isLoading && tasks.length > 0" class="row mt-2">
-    <div *ngFor="let task of tasks" class="col-md-4 mb-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ task.title }}</h5>
-          <p class="card-text">{{ task.description }}</p>
-          <span class="badge" [ngClass]="{'bg-success': task.isCompleted, 'bg-danger': !task.isCompleted}">
-            {{ task.isCompleted ? 'Completed' : 'Not Completed' }}
+</div>
+
+<!-- No tasks available message -->
+<div *ngIf="!isLoading && tasks.length === 0" 
+     class="alert alert-pastel-warning text-center fw-bold shadow-sm mt-3 fade-in rounded-lg py-3" 
+     role="alert">
+  <i class="bi bi-info-circle fs-5"></i> No tasks available. Create one now!
+</div>
+
+<!-- Task list -->
+<div *ngIf="!isLoading && tasks.length > 0" class="container mt-4">
+  <div class="row g-4">
+    <div *ngFor="let task of tasks" class="col-md-4">
+      <div class="card shadow border-0 rounded-lg overflow-hidden fade-in position-relative">
+        <div class="card-body p-4 bg-pastel-light">
+          <h5 class="card-title fw-bold text-pastel-primary">{{ task.title }}</h5>
+          <p class="card-text text-muted">{{ task.description || 'No description provided.' }}</p>
+          <span class="badge status-badge px-3 py-2 rounded-pill text-white shadow-sm" 
+                [ngClass]="{'bg-pastel-green': task.isCompleted, 'bg-pastel-red': !task.isCompleted}">
+            {{ task.isCompleted ? '✔ Completed' : '❌ Not Completed' }}
           </span>
-          <button class="btn btn-danger btn-sm position-absolute bottom-0 end-0" (click)="deleteTask(task.id)">
-            Delete
-          </button>
+          <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-pastel-blue btn-sm px-3 scale-hover" (click)="updateTask(task)">
+              <i class="bi bi-pencil-square"></i> Update
+            </button>
+            <button class="btn btn-pastel-red btn-sm px-3 scale-hover" (click)="deleteTask(task.id)">
+              <i class="bi bi-trash3"></i> Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<!-- Task creation form -->
+<div class="d-flex justify-content-center mt-4">
   <app-create-task-form (taskCreated)="refreshTasks()"></app-create-task-form>
-  
+</div>

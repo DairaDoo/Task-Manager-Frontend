@@ -1,6 +1,6 @@
-<!-- Botón para abrir el modal -->
+<!-- Button to open the modal -->
 <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#taskModal">
-  Nueva Tarea
+  New Task
 </button>
 
 <!-- Modal -->
@@ -8,39 +8,39 @@
   <div class="modal-dialog">
     <div class="modal-content border-0 shadow-lg">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="taskModalLabel">Crear Nueva Tarea</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <h5 class="modal-title" id="taskModalLabel">Create New Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-          <!-- Campo de título -->
+          <!-- Title field -->
           <div class="form-floating mb-3">
-            <input type="text" id="title" class="form-control" formControlName="title" placeholder="Título de la tarea" required />
-            <label for="title">Título de la tarea</label>
+            <input type="text" id="title" class="form-control" formControlName="title" placeholder="Task title" required />
+            <label for="title">Task Title</label>
           </div>
           <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="text-danger small">
-            El título es obligatorio.
+            The title is required.
           </div>
 
-          <!-- Campo de descripción -->
+          <!-- Description field -->
           <div class="form-floating mb-3">
-            <textarea id="description" class="form-control" formControlName="description" placeholder="Descripción de la tarea" style="height: 100px"></textarea>
-            <label for="description">Descripción (opcional)</label>
+            <textarea id="description" class="form-control" formControlName="description" placeholder="Task description" style="height: 100px"></textarea>
+            <label for="description">Description (optional)</label>
           </div>
 
-          <!-- Toggle de completado -->
+          <!-- Completion toggle -->
           <div class="d-flex align-items-center justify-content-between">
-            <label class="form-label fw-bold">Estado:</label>
+            <label class="form-label fw-bold">Status:</label>
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" formControlName="isCompleted" id="isCompleted">
-              <label class="form-check-label" for="isCompleted">Marcar como completada</label>
+              <label class="form-check-label" for="isCompleted">Mark as complete</label>
             </div>
           </div>
 
           <div class="modal-footer border-0">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
             <button type="submit" class="btn btn-success" [disabled]="taskForm.invalid" data-bs-dismiss="modal">
-              <i class="bi bi-check-circle-fill"></i> Crear Tarea
+              <i class="bi bi-check-circle-fill"></i> Create Task
             </button>
           </div>
         </form>

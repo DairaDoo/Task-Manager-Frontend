@@ -55,6 +55,25 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  updateTask(task: Task): void {
+    const updatedTask: Omit<Task, 'createdAt'> = {
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      isCompleted: !task.isCompleted
+    }
+
+    this.apiService.updateTask(updatedTask.id, updatedTask).subscribe({
+      next: (response) => {
+        console.log(`Task with ID ${task.id} updated successfully.`, response);
+        this.refreshTasks(); // actualizar todos los tasks
+      },
+      error: (error) => {
+        console.error(`Error updating task with ID ${task.id}`,)
+      }
+    })
+  }
+
   deleteTask(id: number) {
     if (confirm('Are you sure you want to delete this task?: ')) {
       this.apiService.deleteTask(id).subscribe({
@@ -68,4 +87,5 @@ export class TaskListComponent implements OnInit {
       })
     }
   }
+
 }

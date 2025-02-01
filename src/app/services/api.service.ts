@@ -31,6 +31,11 @@ export class ApiService {
         return this.http.post<Task>(`${this.apiUrl}/api/tasks`, task);
     }
 
+    // Method to update a specific task
+    updateTask(id: number, task: Omit<Task, 'createdAt'> ): Observable<Task> {
+        return this.http.put<Task>(`${this.apiUrl}/api/tasks/${id}`, task);
+    }
+
     // Method to delete a specific task
     deleteTask(id: number): Observable<void> {
         return this.http.delete<void>(`${this.apiUrl}/api/tasks/${id}`);
